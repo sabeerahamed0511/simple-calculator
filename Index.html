@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        #calc-container{
+            width: 210px;
+            margin: 50px auto;
+            border: 1px solid black;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: beige;
+            display: grid;
+            grid-template-columns: 40px 40px 40px 40px;
+            grid-template-rows: 40px 40px 40px 40px 40px 40px;
+            grid-gap: 10px;
+            box-sizing: border-box;
+        }
+        input[type="text"]{
+            grid-column: 1 / span 4;
+            padding: 5px;
+            font-weight: 600;
+            font-size: medium;
+            box-sizing: border-box;
+            border-radius: 3px;
+            border: 1px solid #aaa;
+        }
+        #clr{
+            grid-column: 1 / span 4;
+            border: 1px solid #aaa;
+        }
+        button{
+            border-radius: 3px;
+            border: 1px solid #aaa;
+            font-weight: 600;
+            font-size: medium;
+        }
+    </style>
+</head>
+<body>
+    <div id="calc-container">
+        <input type="text" id="input" name="display">
+
+        <button id="block1" value="1" onclick="AddingStr(this.value)">1</button>
+        <button id="block2" value="2" onclick="AddingStr(this.value)">2</button>
+        <button id="block3" value="3" onclick="AddingStr(this.value)">3</button>
+        <button id="divide" value="/" onclick="AddingStr(this.value)">/</button>
+
+        <button id="block4" value="4" onclick="AddingStr(this.value)">4</button>
+        <button id="block5" value="5" onclick="AddingStr(this.value)">5</button>
+        <button id="block6" value="6" onclick="AddingStr(this.value)">6</button>
+        <button id="multiply" value="*" onclick="AddingStr(this.value)">*</button>
+
+        <button id="block7" value="7" onclick="AddingStr(this.value)">7</button>
+        <button id="block8" value="8" onclick="AddingStr(this.value)">8</button>
+        <button id="block9" value="9" onclick="AddingStr(this.value)">9</button>
+        <button id="minus" value="-" onclick="AddingStr(this.value)">-</button>
+
+        <button id="block0" value="0" onclick="AddingStr(this.value)">0</button>
+        <button id="dot" value="." onclick="AddingStr(this.value)">.</button>
+        <button id="ans"  onclick="Answer()">=</button>
+        <button id="plus" value="+" onclick="AddingStr(this.value)">+</button>
+        
+        <button id="clr" onclick="Clear()" >clear</button>
+    </div>
+    <script>
+        function AddingStr(str){
+            let displayStr = document.querySelector("#input").value;
+            displayStr += str;
+            document.querySelector("#input").value = displayStr;
+        }
+
+        function Answer(){
+            let displayStr = document.querySelector("#input").value;
+            displayStr = eval(displayStr);
+            document.querySelector("#input").value = displayStr;
+        }
+
+        function Clear(){
+            document.querySelector("#input").value = "";
+        }
+    </script>
+</body>
+</html>
